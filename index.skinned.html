@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color Highlighter</title>
+<link rel="stylesheet" href="http://img.lgm.cl/assets/bootstrap/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="http://img.lgm.cl/assets/bootstrap/css/bootstrap-theme.min.css" type="text/css">
+<!-- link rel="stylesheet" href="http://img.lgm.cl/assets/bootstrap/css/bootstrap.darkly.min.css" type="text/css" -->
+<link rel="stylesheet" href="http://img.lgm.cl/assets/font-awesome/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="http://img.lgm.cl/assets/material-design/css/bootstrap-material-design.min.css" type="text/css">
+<link rel="stylesheet" href="http://img.lgm.cl/assets/material-design/css/ripples.min.css" type="text/css">
+<link rel="stylesheet" href="http://img.lgm.cl/assets/noUiSlider/nouislider.min.css" type="text/css">
+<link rel="stylesheet" href="index.css" type="text/css">
+<script type="text/javascript" src="http://img.lgm.cl/assets/js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="http://img.lgm.cl/assets/js/jquery.mobile.custom.min.js"></script>
+<script type="text/javascript" src="http://img.lgm.cl/assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://img.lgm.cl/assets/material-design/js/material.min.js"></script>
+<script type="text/javascript" src="http://img.lgm.cl/assets/material-design/js/ripples.min.js"></script>
+<script type="text/javascript" src="http://img.lgm.cl/assets/material-design/js/ripples.min.js"></script>
+<script type="text/javascript" src="http://img.lgm.cl/assets/noUiSlider/nouislider.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+	<canvas id="arena" title="Click anywhere on the image to highlight a color"></canvas>
+	<div class="panel panel-primary movable">
+		<div class="panel-heading" title="You can move this panel by dragging this heading. You can expand and collapse this panel by clicking on this heading.">
+			<h3 class="panel-title">Highlight a color from an image</h3>
+		</div>
+		<div class="panel-body">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Color info</a></li>
+				<li role="presentation"><a href="#loadFromURL" aria-controls="loadFromURL" role="tab" data-toggle="tab">Load from URL</a></li>
+				<li role="presentation"><a href="#loadFromFile" aria-controls="loadFromFile" role="tab" data-toggle="tab">Load from File</a></li>
+			</ul>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="home">
+					<form class="form-horizontal">
+						<div id="color" style="position: absolute; z-index: 10; margin-top: 16px; width: 64px; height: 128px; background-color: #000"></div>
+						<div class="form-group">
+							<label for="red" class="col-md-4 control-label">Red</label>
+							<div class="col-md-2">
+								<input type="text" class="form-control" id="red">
+							</div>
+							<div class="col-md-6">
+								<div id="sliderRed"></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="green" class="col-md-4 control-label">Green</label>
+							<div class="col-md-2">
+								<input type="text" class="form-control" id="green">
+							</div>
+							<div class="col-md-6">
+								<div id="sliderGreen"></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="blue" class="col-md-4 control-label">Blue</label>
+							<div class="col-md-2">
+								<input type="text" class="form-control" id="blue">
+							</div>
+							<div class="col-md-6">
+								<div id="sliderBlue"></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="thr" class="col-md-4 control-label">Threshold</label>
+							<div class="col-md-2">
+								<input type="text" class="form-control" id="thr" value="5">
+							</div>
+							<div class="col-md-6">
+								<div id="sliderThr"></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="thr" class="col-md-4 control-label">Zoom %</label>
+							<div class="col-md-2">
+								<input type="text" class="form-control" id="zoom" value="100">
+							</div>
+							<div class="col-md-6">
+								<div id="sliderZoom"></div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="loadFromURL">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="imageURL" class="col-md-6 control-label">Write the URL of an online image</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="imageURL" placeholder="http://...">
+							</div>
+						</div>
+						<div><i class="fa fa-info-circle"></i> Images are processed on your web browser, not uploaded anywhere.</div>
+					</form>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="loadFromFile">
+					<form class="form-horizontal">
+						<div class="form-group is-empty is-fileinput">
+							<label for="imageLoader" class="col-md-6 control-label">Select an image from your computer<br />:</label>
+							<div class="col-md-6">
+								<input type="text" readonly="" class="form-control" placeholder="Browse...">
+								<input type="file" id="imageLoader" name="imageLoader" accept="image/gif, image/jpeg, image/png">
+							</div>
+						</div>
+						<div><i class="fa fa-info-circle"></i> Images are processed on your web browser, not uploaded anywhere.</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

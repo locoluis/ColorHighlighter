@@ -1,0 +1,33 @@
+.color {
+	padding: 0 !important;
+}
+.color span {
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin: 7px 0px;
+}
+canvas {
+	image-rendering: -moz-pixelated;         /* Firefox */
+	image-rendering:   -o-pixelated;         /* Opera */
+	image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+	image-rendering: pixelated;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+.movable {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	z-index: 10;
+	width: 512px;
+}
+.form-group label.control-label {
+	color: #666;
+	font-size: 13px;
+}
+.form-group {
+	margin-top: 0px;
+}
+.movable .panel-heading {
+	cursor: move;
+}
